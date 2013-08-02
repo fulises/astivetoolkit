@@ -1,0 +1,87 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.astivetoolkit</groupId>
+        <artifactId>astivetoolkit</artifactId>
+        <version>1.0.0-RC1</version>
+    </parent>
+    <artifactId>docs</artifactId>
+    <name>Astive Toolkit :: Documentation</name>
+    <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.agilejava.docbkx</groupId>
+                <artifactId>docbkx-maven-plugin</artifactId>
+                <version>2.0.14</version>
+                <executions>
+                    <execution>
+                        <id>doc</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.xslthl</groupId>
+                        <artifactId>xslthl</artifactId>
+                        <version>2.0.2</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.sf.offo</groupId>
+                        <artifactId>fop-hyph</artifactId>
+                        <version>1.2</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <sourceDirectory>docs</sourceDirectory>
+                    <targetDirectory>target/docs</targetDirectory>
+                    <xincludeSupported>true</xincludeSupported>
+                    <useExtensions>1</useExtensions>
+                    <highlightSource>1</highlightSource>
+                    <highlightDefaultLanguage>java</highlightDefaultLanguage>
+                    <calloutsExtension>1</calloutsExtension>
+                    <paperType>A4</paperType>
+                    <fop1Extensions>1</fop1Extensions>
+                    <foCustomization>${basedir}/conf/customization-fopdf.xsl</foCustomization>
+                    <includes>manual.xml</includes>
+                    <postProcess>
+                        <zip
+                            destfile="${project.build.directory}/${project.artifactId}-${project.version}-docs.zip">
+                            <fileset dir="${project.build.directory}/docs"
+                                             includes="**/*.pdf" />
+                        </zip>
+                    </postProcess>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-docs.zip</file>
+                                    <type>zip</type>
+                                    <classifier>docs</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
