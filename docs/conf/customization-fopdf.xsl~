@@ -88,10 +88,10 @@
 	<xsl:param name="shade.verbatim" select="1" />
 
 	<xsl:attribute-set name="shade.verbatim.style">
-		<xsl:attribute name="background-color">#498a77</xsl:attribute>
+		<xsl:attribute name="background-color">#498A77</xsl:attribute>
 		<xsl:attribute name="border-width">0.5pt</xsl:attribute>
 		<xsl:attribute name="border-style">solid</xsl:attribute>
-		<xsl:attribute name="border-color">#498a77</xsl:attribute>
+		<xsl:attribute name="border-color">#575757</xsl:attribute>
 		<xsl:attribute name="padding">3pt</xsl:attribute>
 	</xsl:attribute-set>
 

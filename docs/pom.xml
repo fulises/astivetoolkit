@@ -51,36 +51,7 @@
                     <fop1Extensions>1</fop1Extensions>
                     <foCustomization>${basedir}/conf/customization-fopdf.xsl</foCustomization>
                     <includes>manual.xml</includes>
-                    <postProcess>
-                        <zip
-                            destfile="${project.build.directory}/${project.artifactId}-${project.version}-docs.zip">
-                            <fileset dir="${project.build.directory}/docs"
-                                             includes="**/*.pdf" />
-                        </zip>
-                    </postProcess>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-docs.zip</file>
-                                    <type>zip</type>
-                                    <classifier>docs</classifier>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
