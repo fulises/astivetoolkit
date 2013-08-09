@@ -10,15 +10,10 @@
       xmlns:ns3="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
   <info>
-    <releaseinfo role="git">
-      <?eval ${project.version}?>
-    </releaseinfo>
-
+    <releaseinfo role="git"><?eval ${project.version}?></releaseinfo>
     <releaseinfo role="location"/>
 
-    <title>Astive Toolkit Documentation</title>
-
-    <subtitle>Release <?eval ${project.version}?></subtitle>
+    <title>Astive Toolkit: Documentation</title>
 
     <authorgroup>
       <author>
@@ -30,9 +25,7 @@
     <pubdate>2013-10-01</pubdate>
 
     <copyright>
-      <year>
-        <?eval ${project.inceptionYear}?>
-      </year>
+      <year><?eval ${project.inceptionYear}?></year>
 
       <holder>PhonyTive LLC. All Rights Reserved.</holder>
     </copyright>
@@ -74,21 +67,21 @@
   </info>
 
   <preface>
-	<title>Preface</title>
-	<para>If you have a preface, put it here.</para>
+    <title>Preface</title>
+    <para>If you have a preface, put it here.</para>
   </preface>
 
-  <toc />
+  <toc/>
 
   <chapter>
-	<title>Getting started</title>
-  	<xi:include href="section0.inc.xml"/>
-  	<xi:include href="section1.inc.xml"/>
+    <title>Getting started</title>
+    <xi:include href="section0.inc.xml"/>
+    <xi:include href="section1.inc.xml"/>
   </chapter>
 
   <chapter>
-	<title>Installation</title>
-  	<xi:include href="section2.inc.xml"/>
+    <title>Installation</title>
+    <xi:include href="section2.inc.xml"/>
   </chapter>
 
   <appendix xml:id="changes">
@@ -99,5 +92,4 @@
     <para>Revised Draft. 10 October 2013. Usage examples, additional
     clarifications added.</para>
   </appendix>
-
-</book>	
+</book>

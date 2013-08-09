@@ -1,16 +1,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xslthl="http://xslthl.sf.net"
 	xmlns:fo="http://www.w3.org/1999/XSL/Format" exclude-result-prefixes="xslthl" version="1.0">
 
-	<xsl:import href="urn:docbkx:stylesheet" />
-	<xsl:import href="urn:docbkx:stylesheet/highlight.xsl"/>
-
-	<xsl:param name="draft.watermark.image">
-		images/draft.png
-	</xsl:param>
+    <xsl:import href="urn:docbkx:stylesheet" />
+    <xsl:import href="urn:docbkx:stylesheet/highlight.xsl"/>
+    <xsl:param name="draft.watermark.image">images/logo.png</xsl:param>
 
     <!--###################################################
                   Paper & Page Size
-   ################################################### -->
+    ################################################### -->
 
     <!-- Paper type, no headers on blank pages, no double sided printing -->
     <xsl:param name="paper.type" select="'A4'"/>
@@ -30,12 +27,17 @@
     <xsl:param name="page.margin.outer">18mm</xsl:param>
     <xsl:param name="page.margin.inner">18mm</xsl:param>
 
-    <!-- No intendation of Titles -->
+    <!-- No idendation of Titles -->
     <xsl:param name="title.margin.left">0pc</xsl:param>
 
     <!--###################################################
                   Fonts & Styles
    ################################################### -->
+
+    <xsl:param name="title.font.family">sans-serif</xsl:param>
+    <xsl:param name="title.font.size">12</xsl:param>
+
+    <xsl:param name="body.font.family">Helvetica</xsl:param>
 
     <!-- Left aligned text and no hyphenation -->
     <xsl:param name="alignment">justify</xsl:param>
@@ -46,7 +48,7 @@
     <xsl:param name="body.font.small">8</xsl:param>
 
     <!-- Line height in body text -->
-    <xsl:param name="line-height">1.4</xsl:param>
+    <xsl:param name="line-height">1.1</xsl:param>
 
     <!-- Monospaced fonts are smaller than regular text -->
     <xsl:attribute-set name="monospace.properties">
@@ -55,7 +57,6 @@
         </xsl:attribute>
         <xsl:attribute name="font-size">0.8em</xsl:attribute>
     </xsl:attribute-set>
-
 
 	<!-- add page break after abstract block -->
 	<xsl:attribute-set name="abstract.properties">
@@ -98,7 +99,18 @@
 	<!-- callouts customization -->
 	<xsl:param name="callout.unicode" select="1" />
 	<xsl:param name="callout.graphics" select="0" />
-    <xsl:param name="callout.defaultcolumn">90</xsl:param>	
+    <xsl:param name="callout.defaultcolumn">90</xsl:param>  
 
-
+    <xsl:attribute-set name="section.title.properties">
+    	<xsl:attribute name="font-family">
+    		<xsl:value-of select="$title.font.family"/>
+  	</xsl:attribute>
+  	<xsl:attribute name="font-weight">200</xsl:attribute>
+  	<xsl:attribute name="font-size">10pt</xsl:attribute>
+  	<!-- font size is calculated dynamically by section.heading template -->
+  	<xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
+  	<xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
+  	<xsl:attribute name="space-before.optimum">1.0em</xsl:attribute>
+  	<xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+    </xsl:attribute-set>
 </xsl:stylesheet>
